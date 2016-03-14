@@ -1,6 +1,7 @@
 <?php
-$target_dir = "./";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+$target_dir = "gs://test-app-124310.appspot.com/";
+$target_file = $target_dir .date("YmdHis_"). basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
