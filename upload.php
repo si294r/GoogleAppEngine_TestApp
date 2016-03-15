@@ -42,4 +42,28 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+$mysqli = new mysqli(null, 'usertest', 'password', 'testdb', null, '/cloudsql/test-app-124310:testapp');
+
+$sql = "Insert Into t_upload Set filename=?, filedata=?, created_date=now(), updated_date=now()";
+
+if ($stmt = $mysqli->prepare($sql)) {
+
+    /* bind parameters for markers */
+    $filename = $target_file; // string = s
+    $null = NULL; // dummy blob = b
+
+    $stmt->bind_param("sb", $filename, $null);
+    $stmt->send_long_data(1, file_get_contents($target_file));
+
+    /* execute query */
+    $stmt->execute();
+
+    /* close statement */
+    $stmt->close();
+}
+
+/* close connection */
+$mysqli->close();
+
 ?>

@@ -2,13 +2,19 @@ runtime: php55
 api_version: 1
 
 handlers:
-- url: /frm_upload.php
-  script: frm_upload.php
-- url: /upload.php
-  script: upload.php
-- url: /client_upload.php
-  script: client_upload.php
-- url: /getUrlUpload.php
-  script: getUrlUpload.php
-- url: /.*
-  script: helloworld.php
+- url: /(.*)
+  script: \1
+  
+#- url: /.*
+#  script: helloworld.php
+#- url: /frm_upload.php
+#  script: frm_upload.php
+#- url: /upload.php
+#  script: upload.php
+#- url: /client_upload.php
+#  script: client_upload.php
+#- url: /getUrlUpload.php
+#  script: getUrlUpload.php
+#- url: /testevent.php
+#  script: testevent.php
+  
